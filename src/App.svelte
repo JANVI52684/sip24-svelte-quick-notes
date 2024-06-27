@@ -29,13 +29,11 @@
     pages.push("New Page");
     selectPage(pages.length ? pages.length-1:0);
   }
+  //delete function
   function deletePage(index) {
     if (pages.length > 0) {
-      // Remove the current page title from local storage
       localStorage.removeItem(pages[currPage]);
-      // Remove the current page from the pages array
       pages.splice(currPage, 1);
-      // Update the pages in local storage
       localStorage.setItem("pages", JSON.stringify(pages));
 
       if (pages.length > 0) {
@@ -56,9 +54,14 @@
     title = pages[currPage];
     note = localStorage.getItem(title);
   }
+
+  
 </script>
 
-<aside class ="fixed top-0 left-0 z-40 w-60 h-screen">
+
+<h1 class="font-bold border-b p-4 text-5xl text-center">To-Do List</h1>
+
+<aside class ="fixed top-0 left-0 z-40 w-60 h-screen mt-20">
   <div class ="bg-light-gray overflow-y-auto py-5 px-3 h-full border-r border-gray-400">
     <ul class="space-y-2">
       {#each pages as page, index}
